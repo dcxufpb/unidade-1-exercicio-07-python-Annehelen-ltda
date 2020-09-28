@@ -83,7 +83,7 @@ def test_loja_completa():
 
 def test_nome_vazio():
     verifica_campo_obrigatorio_param(
-        "O campo logradouro do endereço é obrigatório",
+        "O campo nome da loja é obrigatório",
         None,
         LOGRADOURO,
         NUMERO,
@@ -339,22 +339,29 @@ def test_inscricao_estadual_vazia():
 def test_exercicio2_customizado():
 
     # Defina seus próprios valores para as variáveis a seguir
-    nome_loja = ""
-    logradouro = ""
-    numero = 0
-    complemento = ""
-    bairro = ""
-    municipio = ""
-    estado = ""
-    cep = ""
-    telefone = ""
-    observacao = ""
-    cnpj = ""
-    inscricao_estadual = ""
+    nome_loja = "Smelly Cat"
+    logradouro = "Rua Etheria"
+    numero = 205
+    complemento = "Perto da velhinha que mora em uma caverna"
+    bairro = "Br. Templo do Cristal"
+    municipio = "Beach City"
+    estado = "BC"
+    cep = "8051-604"
+    telefone = "(66)4002-8922"
+    observacao = "Por Favor ignorar os exército Intergalácticos em guerra tentando dominar o planeta"
+    cnpj = "53.409.609/0001-85"
+    inscricao_estadual = "512.670.302.653"
+
+    expected = "Smelly Cat\n"
+    expected += "Rua Etheria, 205 Perto da velhinha que mora em uma caverna\n"
+    expected += "Br. Templo do Cristal - Beach City - BC\n"
+    expected += "CEP:8051-604 Tel (66)4002-8922\n"
+    expected += "Por Favor ignorar os exército Intergalácticos em guerra tentando dominar o planeta\n"
+    expected +="CNPJ: 53.409.609/0001-85\n"
+    expected += "IE: 512.670.302.653"
 
     # E atualize o texto esperado abaixo
     assert (
         cupom.dados_loja_param(nome_loja, logradouro, numero, complemento, bairro, municipio, estado, cep, telefone, observacao, cnpj, inscricao_estadual)
-        == """
-"""
+        == expected
     )
